@@ -1,0 +1,24 @@
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.genDiv {
+  width: 100%;
+  height: 100vw;
+}
+
+.bi {
+  width: 50%;
+  height: 100%;
+}
+.centerH {
+  display: flex;
+  justify-content: center;
+}
+.centerV {
+  display: flex;
+  align-content: center;
+}
