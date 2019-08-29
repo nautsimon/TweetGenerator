@@ -7,9 +7,8 @@ class Form extends React.Component {
     const handle = event.target.elements.handle.value;
     event.preventDefault();
     return axios
-      .post("http://127.0.0.1:8000/api/", {
-        handle: handle,
-        content: "dsda"
+      .post("http://127.0.0.1:8000/gen/", {
+        handle: handle
       })
       .then(res => console.log(res))
       .catch(error => console.err(error));

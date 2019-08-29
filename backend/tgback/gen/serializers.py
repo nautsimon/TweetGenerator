@@ -4,9 +4,10 @@ from gen.models import Gen, LANGUAGE_CHOICES, STYLE_CHOICES
 
 class GenSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(
+    handle = serializers.CharField(
         required=False, allow_blank=True, max_length=100)
-    code = serializers.CharField(style={'base_template': 'textarea.html'})
+    code = serializers.CharField(
+        style={'base_template': 'textarea.html'}, required=False)
     linenos = serializers.BooleanField(required=False)
     language = serializers.ChoiceField(
         choices=LANGUAGE_CHOICES, default='python')
@@ -22,7 +23,7 @@ class GenSerializer(serializers.Serializer):
         """
         Update and return an existing `Snippet` instance, given the validated data.
         """
-        instance.title = validated_data.get('title', instance.title)
+        instance.handle = validated_data.get('handle', instance.handle)
         instance.code = validated_data.get('code', instance.code)
         instance.linenos = validated_data.get('linenos', instance.linenos)
         instance.language = validated_data.get('language', instance.language)

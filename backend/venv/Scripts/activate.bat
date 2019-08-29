@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\Simon\Documents\GitHub\TweetGenerator\venv"
+set "VIRTUAL_ENV=C:\Users\Simon\Documents\GitHub\TweetGenerator\backend\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

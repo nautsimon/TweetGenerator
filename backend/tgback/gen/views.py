@@ -3,8 +3,16 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from gen.models import Gen
 from gen.serializers import GenSerializer
+import tweepy as tweepy
+import re
+import random
+import sys
+from collections import defaultdict, Counter
 
-
+consumer_key = 'ZVf8uKCcoFzcsTzN6sVXyTnbN'
+consumer_secret = 'duWsSe95grFNt9gDA0mO9rtU6i6ds7Levk5OxNlXnWSN9lGLDd'
+access_token = '3849389602-cAcwvTcPyDrTec1nMfYZDkDrqGPxRCgX6reSDpH'
+access_token_secret = 'GFwja2G0fm0BLRDq5EP8Lpl2IOLT5AkRTrndYTa7PYPfz'
 
 # OAuth process, using the keys and tokens
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -26,11 +34,12 @@ def genMarkov(data):
     print('Sampling...')
     state = random.choice(list(model))
     out = list(state)
-    for i in range(200):
+    for i in range(140):
         out.extend(random.choices(list(model[state]), model[state].values()))
         state = state[1:] + out[-1]
     markovOutput = ''.join(out)
-    print(markovOutput[markovOutput.index(' ')+1:])
+    print(markovOutput[markovOutput.index(' ')+1:markovOutput.rindex(' ')])
+    return(markovOutput[markovOutput.index(' ')+1:markovOutput.rindex(' ')])
 
 
 def getTweets(handle):
@@ -81,14 +90,9 @@ def getTweets(handle):
 
     print(output)
     print(outputList)
-    genMarkov(outputList)
+    return genMarkov(outputList)
     # genTensor(outputList)
 
-
-class GenerateViewSet(viewsets.ModelViewSet):
-    serializer_class = GenerateSerializer
-    queryset = Generate.objects.all()
-    getTweets('@largeeggie')
 
 @api_view(['GET', 'POST'])
 def gen_list(request, format=None):
@@ -102,14 +106,20 @@ def gen_list(request, format=None):
 
     elif request.method == 'POST':
         print(request.data)
-        serializer = GenSerializer(data=request.data)
+        handle = "@"+str(request.data)[24:-4]
+        # getTweets('@largeeggie')
+        #serializer = GenSerializer(data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            epic = str(request.data) + "fuck"
-
+        # if serializer.is_valid():
+        #     serializer.save()
+        try:
+            u = api.get_user(handle)
+            print(u.id_str)
+            print(u.screen_name)
+            epic = getTweets(handle)
             return Response(epic, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response("invalid username", status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])

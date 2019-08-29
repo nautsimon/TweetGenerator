@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\Users\Simon\Documents\GitHub\TweetGenerator\venv'; else echo '/C/Users/Simon/Documents/GitHub/TweetGenerator/venv'; fi;)"
+VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\Users\Simon\Documents\GitHub\TweetGenerator\backend\venv'; else echo '/C/Users/Simon/Documents/GitHub/TweetGenerator/backend/venv'; fi;)"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
