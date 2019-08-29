@@ -1,15 +1,40 @@
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+.fullHeight {
+  height: 100vh;
+}
 .row {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+  display: inline-flex;
 }
-
+.titleImg {
+  position: absolute;
+  left: 50%;
+  margin-left: -250px;
+  width: 40%;
+  z-index: 5;
+  margin-top: 50px;
+}
 .genDiv {
-  width: 100%;
-  height: 100vw;
+  background: #91f7a9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #c6fed3,
+    #91f7a9
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #c6fed3,
+    #91f7a9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
 .bi {
   width: 50%;
   height: 100%;
@@ -20,5 +45,16 @@
 }
 .centerV {
   display: flex;
-  align-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 660px) {
+  .row {
+    width: 100%;
+    display: inline-block;
+  }
+  .bi {
+    width: 100%;
+    height: 50%;
+  }
 }
