@@ -1,8 +1,8 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from gen.models import Gen
-from gen.serializers import GenSerializer
+# from gen.models import Gen
+# from gen.serializers import GenSerializer
 import tweepy as tweepy
 import re
 import random
@@ -96,7 +96,7 @@ def getTweets(handle):
     # genTensor(outputList)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def gen_list(request, format=None):
     """
     List all code snippets, or create a new snippet.
