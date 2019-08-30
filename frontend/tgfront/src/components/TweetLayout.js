@@ -13,10 +13,10 @@ const TweetLayout = props => {
         <div className="twtMainDiv">
           <div className="twtRow">
             <p className="black twtPad">
-              <b>{props.username}_twtgen</b>
+              <b>tweetgen.xyz</b>
             </p>
 
-            <p className="">@tweetgen.xyz</p>
+            <p className="">@{props.username}</p>
 
             <p className="twtPadBi"> · </p>
 
