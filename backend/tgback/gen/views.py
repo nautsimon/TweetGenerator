@@ -96,7 +96,7 @@ def getTweets(handle):
     # genTensor(outputList)
 
 
-@api_view(['POST'])
+@api_view(['GET', 'PUT', 'POST', 'DELETE'])
 def gen_list(request, format=None):
     """
     List all code snippets, or create a new snippet.
@@ -124,31 +124,30 @@ def gen_list(request, format=None):
             return Response("invalid username", status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def gen_detail(request, pk, format=None):
-    """
-    Retrieve, update or delete a code snippet.
-    """
-    try:
-        gen = Gen.objects.get(pk=pk)
-    except Gen.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# def gen_detail(request, pk, format=None):
+#     """
+#     Retrieve, update or delete a code snippet.
+#     """
+#     try:
+#         gen = Gen.objects.get(pk=pk)
+#     except Gen.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
-        serializer = GenSerializer(gen)
-        return Response(serializer.data)
+#     if request.method == 'GET':
+#         serializer = GenSerializer(gen)
+#         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = GenSerializer(gen, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            cry = "cry"
-            return Response(cry)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     elif request.method == 'PUT':
+#         serializer = GenSerializer(gen, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             cry = "cry"
+#             return Response(cry)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        gen.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'DELETE':
+#         gen.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 # from django.http import HttpResponse, JsonResponse
 # from django.views.decorators.csrf import csrf_exempt
 # from rest_framework.parsers import JSONParser
