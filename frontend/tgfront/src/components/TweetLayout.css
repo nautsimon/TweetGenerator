@@ -1,3 +1,49 @@
-.tweet {
+.twtDiv {
+  width: 70%;
+  margin-left: 5%;
+  margin-right: 5%;
   background: #ffffff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+}
+
+.twtImgDiv {
+  width: 10%;
+  margin: 2%;
+}
+.profImg {
+  width: 100%;
+}
+.twtMainDiv {
+  color: rgb(144, 144, 144);
+  width: 90%;
+  margin: 2%;
+}
+.twtRow {
+  width: 100%;
+  display: inline-flex;
+}
+.black {
+  color: #000000;
+}
+.borderImg {
+  width: 60%;
+}
+.twtPad {
+  padding-right: 4px;
+  padding-left: 0px;
+}
+.twtPadBi {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.twtMainText {
+  margin-top: -13px;
+}
+@media screen and (max-width: 660px) {
+  .twtDiv {
+    width: 100%;
+  }
 }

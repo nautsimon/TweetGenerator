@@ -8,7 +8,7 @@ class Form extends React.Component {
     event.preventDefault();
     return axios
       .post("http://127.0.0.1:8000/gen/", {
-        handle: handle
+        title: handle
       })
       .then(res => console.log(res))
       .catch(error => console.err(error));

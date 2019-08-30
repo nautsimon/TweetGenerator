@@ -56,7 +56,7 @@ def getTweets(handle):
 # ----------------------------------------------------
     # save the id of the oldest tweet less one
     oldest = alltweets[-1].id - 1
-
+    count = 0
    # keep grabbing tweets until there are no tweets left to grab
     while len(new_tweets) > 0:
         print("getting tweets before" + str(oldest))
@@ -68,11 +68,13 @@ def getTweets(handle):
         # print(new_tweets)
         # if ('RT @' not in new_tweets.text):
         alltweets.extend(new_tweets)
-
+        count = count + 1
         # save most recent tweet s
 
         # update the id of the oldest tweet less one
         oldest = alltweets[-1].id - 1
+        if (count > 2):
+            break
 
         print(len(alltweets))
 # ----------------------------------------------------
@@ -106,7 +108,7 @@ def gen_list(request, format=None):
 
     elif request.method == 'POST':
         print(request.data)
-        handle = "@"+str(request.data)[24:-4]
+        handle = "@"+str(request.data)[11:-2]
         # getTweets('@largeeggie')
         #serializer = GenSerializer(data=request.data)
 

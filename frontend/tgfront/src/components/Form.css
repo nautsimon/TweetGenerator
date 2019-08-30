@@ -5,15 +5,30 @@
 }
 
 .input {
-  color: #59d576;
+  color: #ffffff;
   padding: 10px;
   display: inline-flex;
   border: 1px solid #ffffff;
+  background: transparent;
   border-radius: 5px;
   height: 38px;
   margin: 0px;
 }
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
 
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
 .button {
   background-color: transparent;
   display: inline-block;
