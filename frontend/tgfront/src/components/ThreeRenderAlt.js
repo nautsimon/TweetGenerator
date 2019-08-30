@@ -66,8 +66,8 @@ class SceneAlt extends Component {
     });
 
     var planet = new THREE.Mesh(geom, mat);
-    planet.scale.x = planet.scale.y = planet.scale.z = 0;
-    circle.add(planet); //adding to scene
+    planet.scale.x = planet.scale.y = planet.scale.z = 1;
+    // circle.add(planet); //adding to scene
     ///////////////////////////////////
 
     //outer planet

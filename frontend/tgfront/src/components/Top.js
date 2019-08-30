@@ -39,7 +39,7 @@ class Top extends React.Component {
               onSubmit={event => this.handleFormSubmit(event)}
               className="form'"
             >
-              <label class="at">
+              <label className="at">
                 <b>@</b>
               </label>
               <input
