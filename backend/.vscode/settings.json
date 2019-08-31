@@ -1,4 +1,0 @@
-{
-  "git.ignoreLimitWarning": true,
-  "python.venvPath": "${workspaceFolder}/backend/env/Source/python3"
-}
