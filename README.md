@@ -1,5 +1,5 @@
 # TweetGenerator
 ![Image of screnshot]
-(https://github.com/simonmahns/TweetGenerator/blob/master/tgback/Screen%20Shot%202020-09-19%20at%2010.37.45%20PM.png)
+(https://res.cloudinary.com/drijjqumx/image/upload/v1600569707/tweet.png)
 
 a django application that collects tweets from an user specified twitter user. outputted are simulated tweets from twitter user using the Markov property
