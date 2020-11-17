@@ -16,7 +16,7 @@ api = tweepy.API(auth)
 
 
 
-
+#https://eli.thegreenplace.net/2018/elegant-python-code-for-a-markov-chain-text-generator/
 def genMarkov(data):
     STATE_LEN = 4
     model = defaultdict(Counter)
