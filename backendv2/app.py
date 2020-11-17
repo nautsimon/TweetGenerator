@@ -1,10 +1,4 @@
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.http import HttpResponse
-from django.views.generic import View
-from django.conf import settings
-
+import json
 import tweepy as tweepy
 import re
 import random
@@ -14,15 +8,16 @@ from collections import defaultdict, Counter
 import os
 import logging
 
-
 # tweepy
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+
+auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
-def genMarkov(data):
 
+
+def genMarkov(data):
     STATE_LEN = 4
     model = defaultdict(Counter)
     print('Learning model...')
@@ -37,10 +32,10 @@ def genMarkov(data):
         out.extend(random.choices(list(model[state]), model[state].values()))
         state = state[1:] + out[-1]
     markovOutput = ''.join(out)
-    print(markovOutput[markovOutput.index(' ')+1:markovOutput.rindex(' ')])
-    return(markovOutput[markovOutput.index(' ')+1:markovOutput.rindex(' ')])
-
-
+    finalOut = markovOutput[markovOutput.index(' ')+1:markovOutput.rindex(' ')]
+    print("mark", finalOut)
+    return(finalOut)
+    
 def getTweets(handle):
     alltweets = []
     output = []
@@ -72,16 +67,34 @@ def getTweets(handle):
     return genMarkov(outputList)
 
 
-@api_view(['GET', 'PUT', 'POST', 'DELETE'])
-def generate(request, format=None):
-    if request.method == 'POST':
-        print(request.data)
-        handle = "@"+str(request.data)[11:-2]
-        try:
-            u = api.get_user(handle)
-            print(u.id_str)
-            print(u.screen_name)
-            epic = getTweets(handle)
-            return Response(epic, status=status.HTTP_201_CREATED)
-        except:
-            return Response("invalid username", status=status.HTTP_400_BAD_REQUEST)
+
+def lambda_handler(event, context):
+    print(event['queryStringParameters']['user'])
+    
+    handle = "@"+str(event['queryStringParameters']['user'])
+    print(handle)
+    try:
+        u = api.get_user(handle)
+        print(u)
+        print(u.id_str)
+        print(u.screen_name)
+        epic = getTweets(handle)
+        return {
+            'statusCode': 200,
+            'body': json.dumps(epic)
+        }
+        #return Response(epic, status=status.HTTP_201_CREATED)
+    except:
+        return {
+            'statusCode': 200,
+            'body': json.dumps('fail')
+        }
+            
+            
+#def lambda_handler(event, context):
+#     # TODO implement
+#     return {
+#         'statusCode': 200,
+#         'body': json.dumps('Hello from Lambda!')
+#     }
+    

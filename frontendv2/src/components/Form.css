@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  color: #ffffff;
+  /* margin-top: -10px; */
+  padding-left: 3px;
+  display: inline-flex;
+  border: 1px solid #ffffff;
+  background: transparent;
+  border-radius: 5px;
+  height: 31px;
+  margin: 0px;
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+.button {
+  background-color: transparent;
+  display: inline-block;
+  margin-left: 5px;
+  padding: 8px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  outline: white;
+  text-decoration: none;
+  font-size: 14px;
+}
