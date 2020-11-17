@@ -2,4 +2,6 @@
 
 ![Image of Screenshot](https://raw.githubusercontent.com/simonmahns/TweetGenerator/master/tgback/Screen%20Shot%202020-09-19%20at%2010.37.45%20PM.png)
 
-a django application that collects tweets from an user specified twitter user. outputted are simulated tweets from twitter user using the Markov property
+[V2 (live)](https://confident-pare-b6e027.netlify.app): Django backend rewritten as a lambda function. 
+
+V1: My first django application, uses twitter api to scrape tweets via username and then uses markov chains to generate new tweets. Built on ReactJs. Hosted on Heroku, taken down because of pricing.
